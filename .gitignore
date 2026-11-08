@@ -1,0 +1,63 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# IDE and Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Jupyter & Pytest
+.ipynb_checkpoints/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs and scratch
+*.log
+scratch/
+
+# Internal audit reports and private backup manifests (contain local personal paths)
+_audit_reports/
+FILE_MANIFEST.md
+
+# Third-party student implementations (unverified redistribution authorization; preserved locally)
+labs/**/variant_21/
+
+# Ensure datasets and generated laboratory outputs are NOT ignored
+!*.csv
+!*.png
