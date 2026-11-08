@@ -14,9 +14,9 @@
 
 | Каталог | Датасет | Кількість рядків | Конфігурацій батьківських вузлів | Опис реалізації |
 |---|---|---|---|---|
-| [`machine_failure/`](machine_failure) | `machine_failure.csv` (AI4I 2020) | 10 000 | 81 комбінація | Основний приклад: 10 000 записів, 7 вузлів, 7 дуг, стабільні оцінки CPD через MLE, 6 сценаріїв імовірнісного виведення, візуалізація мережі з роздільною здатністю 300 DPI. |
-| [`machine_failure_prototype/`](machine_failure_prototype) | `machine_failure.csv` | 10 000 | 81 комбінація | Додатковий варіант: рання реалізація на тому ж датасеті AI4I, 5 сценаріїв виведення. |
-| [`plant_growth/`](plant_growth) | `plant_growth_data.csv` | 193 | 243 комбінації | Дослідницький варіант: агротехнічний датасет, висока розрідженість через перевищення кількості батьківських конфігурацій (243) над обсягом вибірки (193). |
+| [`machine_failure/`](machine_failure) | `machine_failure.csv` (AI4I 2020) | 10 000 | 81 комбінація | 10 000 записів, 7 вузлів, 7 дуг, оцінки CPD через MLE, 6 сценаріїв імовірнісного виведення, візуалізація мережі 300 DPI. |
+| [`machine_failure_prototype/`](machine_failure_prototype) | `machine_failure.csv` | 10 000 | 81 комбінація | Рання реалізація на тому ж датасеті AI4I, 5 сценаріїв виведення. |
+| [`plant_growth/`](plant_growth) | `plant_growth_data.csv` | 193 | 243 комбінації | Агротехнічний датасет, висока розрідженість через перевищення кількості батьківських конфігурацій (243) над обсягом вибірки (193). |
 
 ---
 
@@ -35,9 +35,9 @@
 
 З кореневого каталогу проєкту:
 ```powershell
-# Основний приклад (AI4I Machine Failure)
+# Machine Failure (AI4I 2020)
 python labs/06_bayesian_networks/machine_failure/src/lab6.py
 
-# Дослідницький приклад (Plant Growth)
+# Plant Growth
 python labs/06_bayesian_networks/plant_growth/src/lab6.py
 ```

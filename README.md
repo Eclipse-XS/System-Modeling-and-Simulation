@@ -1,6 +1,6 @@
 # Modeling of Processes and Smart Systems
 
-Python laboratory implementations and supplementary computational modeling tools for the university course **Modeling of Processes and Smart Systems** (*Моделювання процесів і смарт-систем*).
+Python laboratory implementations and computational modeling tools for the university course **Modeling of Processes and Smart Systems** (*Моделювання процесів і смарт-систем*).
 
 ---
 
@@ -11,19 +11,19 @@ This repository provides reproducible computational implementations across funda
 1. **Static Black-Box Identification:** Multi-factor linear regression using Ordinary Least Squares (OLS) via normal equations and matrix decomposition.
 2. **Dynamic Nonlinear Systems:** Cauchy problems for Lotka–Volterra predator–prey dynamics and Kermack–McKendrick SIR epidemic spread using the classical 4th-order Runge–Kutta (RK4) method with phase-plane analysis.
 3. **Spatially Distributed Processes:** One-dimensional transient heat conduction governed by parabolic partial differential equations (PDE), solved using the method of lines (finite-difference spatial discretization with RK4 temporal integration) and validated against analytical Fourier series solutions.
-4. **Discrete-Event Systems:** Supplementary Python implementations for Place/Transition Petri nets, providing state-space exploration, reachability graph construction, boundedness, and liveness analysis to support work conducted in specialized modeling software.
+4. **Discrete-Event Systems:** Python implementations for Place/Transition Petri nets, providing state-space exploration, reachability graph construction, boundedness, and liveness analysis to support work conducted in specialized modeling software.
 5. **Probabilistic Graphical Models (Lab 6):** Discrete Bayesian Belief Networks with domain-specified directed acyclic graph (DAG) topology, parameter learning via Maximum Likelihood Estimation (MLE), and exact inference using Variable Elimination.
 
 ---
 
 ## 2. Laboratory Modules
 
-| Lab | Topic | Method / Modeling Paradigm | Primary Example | Key Verified Result |
+| Lab | Topic | Method / Modeling Paradigm | Example Implementation | Key Verified Result |
 |---|---|---|---|---|
 | **1** | Black Box Modeling & OLS | Multi-factor Ordinary Least Squares | [Variant 15](labs/01_black_box_lsq/variant_15/src/lab1.py) | $R^2 \approx 0.282914$, $y(1.5, 3.0) \approx 4.413274$ |
-| **2** | Dynamic Systems (LV & SIR) | RK4 Numerical Integration & Phase Portraits | [Variant 15](labs/02_dynamic_systems/variant_15/src/lab2_1.py) | Periodic orbits (LV), epidemic peak at $t \approx 13.8$ (SIR) |
+| **2** | Dynamic Systems (LV & SIR) | RK4 Numerical Integration & Phase Portraits | [Variant 15](labs/02_dynamic_systems/variant_15/src/lab2_1.py) | Periodic orbits (LV), epidemic peak at $t = 0.8\text{ days}$ (SIR) |
 | **3** | Spatially Distributed Processes | Method of Lines (RK4) vs. Analytical Fourier | [Variant 15](labs/03_spatial_processes/variant_15/src/lab3.py) | Maximum absolute deviation $< 0.057^\circ\text{C}$ ($<0.06\%$) |
-| **4** | Petri Net Modeling & Analysis | Supplementary Reachability Graph Generation | [Variant 04](labs/04_petri_nets/variant_04/src/lab4.py) | 4 places, 4 transitions, finite 4-state reachability graph |
+| **4** | Petri Net Modeling & Analysis | Reachability Graph Generation & Analysis | [Variant 04](labs/04_petri_nets/variant_04/src/lab4.py) | 4 places, 4 transitions, finite 4-state reachability graph |
 | **6** | Bayesian Belief Networks | Manually Defined DAG, MLE, Variable Elimination | [Machine Failure](labs/06_bayesian_networks/machine_failure/src/lab6.py) | AI4I 2020 dataset (10k rows), 6 inference scenarios |
 
 > **Note on Course Curriculum:** Laboratory numbering follows the official university course curriculum (Labs 1, 2, 3, 4, and 6).
@@ -36,20 +36,20 @@ This repository provides reproducible computational implementations across funda
 .
 ├── labs/
 │   ├── 01_black_box_lsq/                     # Lab 1: Least Squares Black-Box Modeling
-│   │   ├── variant_15/                       # Main example: Variant 15 (OOP, residual analysis)
-│   │   └── variant_04/                       # Reference: Variant 04 (Gaussian elimination)
+│   │   ├── variant_15/                       # Variant 15 (OOP, residual analysis)
+│   │   └── variant_04/                       # Variant 04 (Gaussian elimination)
 │   ├── 02_dynamic_systems/                   # Lab 2: Lotka–Volterra and SIR Models
-│   │   ├── variant_15/                       # Main example: Variant 15 (modular RK4, vector fields)
-│   │   └── variant_04/                       # Reference: Variant 04 (basic RK4 integration)
+│   │   ├── variant_15/                       # Variant 15 (modular RK4, vector fields)
+│   │   └── variant_04/                       # Variant 04 (basic RK4 integration)
 │   ├── 03_spatial_processes/                 # Lab 3: Transient Heat Conduction (PDE)
-│   │   ├── variant_15/                       # Main example: Variant 15 (efficient RK4 solver, Fourier series)
-│   │   └── variant_04/                       # Reference: Variant 04 (procedural & structured implementations)
+│   │   ├── variant_15/                       # Variant 15 (efficient RK4 solver, Fourier series)
+│   │   └── variant_04/                       # Variant 04 (procedural & structured implementations)
 │   ├── 04_petri_nets/                        # Lab 4: Discrete Place/Transition Petri Nets
-│   │   └── variant_04/                       # Supplementary Python modeling: Variant 04 (reachability graph)
+│   │   └── variant_04/                       # Variant 04 (reachability graph generation)
 │   └── 06_bayesian_networks/                 # Lab 6: Bayesian Belief Networks
-│       ├── machine_failure/                  # Main example: AI4I 2020 dataset (10k rows, 6 inference queries)
-│       ├── machine_failure_prototype/        # Exploratory prototype for AI4I dataset
-│       └── plant_growth/                     # Small-sample agricultural network (193 rows)
+│       ├── machine_failure/                  # Machine failure (AI4I 2020 dataset, 10k rows)
+│       ├── machine_failure_prototype/        # Machine failure prototype (AI4I 2020 dataset)
+│       └── plant_growth/                     # Plant growth (agricultural dataset, 193 rows)
 ├── .gitignore                                # Git ignore configuration
 └── README.md                                 # Public documentation
 ```
@@ -129,8 +129,8 @@ For Variant 15, the empirical dataset (8 observation points) yields the followin
 
 *Interpretation:* The linear model achieves an $R^2$ of $0.2829$, reflecting moderate fit for a first-order planar approximation over the assigned experimental data.
 
-### Lab 4: Supplementary Petri Net Modeling
-The scripts in `labs/04_petri_nets/` provide supplementary algorithmic analysis for Petri nets modeled during coursework in specialized software environments. The implementation:
+### Lab 4: Petri Net Modeling
+The scripts in `labs/04_petri_nets/` provide programmatic analysis for Petri nets modeled during coursework in specialized software environments. The implementation:
 - Represents the incidence matrix $C = O - I$.
 - Computes transition firing rules under the enabling condition $M \ge I(t)$.
 - Performs breadth-first reachability tree traversal to extract unique reachable markings.
@@ -139,10 +139,17 @@ The scripts in `labs/04_petri_nets/` provide supplementary algorithmic analysis 
 ### Lab 6: Bayesian Network Methodology
 The Bayesian Network implementation in `labs/06_bayesian_networks/machine_failure/src/lab6.py`:
 - **DAG Construction:** The 7-edge DAG structure is specified manually based on physical and operational failure dependencies:
-  - $\text{Type} \to \text{Torque\_cat}$, $\text{Type} \to \text{Speed\_cat}$
-  - $\text{Air\_temp\_cat} \to \text{Process\_temp\_cat}$
-  - $\text{Torque\_cat} \to \text{Machine failure}$, $\text{Wear\_cat} \to \text{Machine failure}$
-  - $\text{Speed\_cat} \to \text{Machine failure}$, $\text{Process\_temp\_cat} \to \text{Machine failure}$
+
+  ```text
+  Type -> Torque_cat
+  Type -> Speed_cat
+  Air_temp_cat -> Process_temp_cat
+  Torque_cat -> Machine failure
+  Wear_cat -> Machine failure
+  Speed_cat -> Machine failure
+  Process_temp_cat -> Machine failure
+  ```
+
 - **Parameter Learning:** Conditional Probability Distributions (CPDs) are estimated from 10,000 discretized records using `MaximumLikelihoodEstimator`.
 - **Probabilistic Inference:** Exact inference is computed using `VariableElimination` across 6 operational scenarios.
 - **Model Validation:** The DAG satisfies structural acyclicity and probability distribution axioms (`check_model()` passes).
@@ -163,8 +170,16 @@ The Bayesian Network implementation in `labs/06_bayesian_networks/machine_failur
 
 ---
 
-## 8. Methodological Limitations
+## 8. Authorship and Provenance
 
-1. **Lab 4 Software Scope:** The Python implementations in Lab 4 serve as analytical supplements and visualizers; they do not replace dedicated graphical Petri net simulation environments used in the primary course curriculum.
+- **Variant 15:** Implementations for Labs 1, 2, 3, and 6.
+- **Variant 04:** Implementations for Labs 1, 2, 3, and 4 (including the Lab 4 Petri Net state-space model).
+- **Machine Failure / Plant Growth:** Bayesian Network implementations based on the AI4I 2020 and Kaggle Plant Growth datasets.
+
+---
+
+## 9. Methodological Limitations
+
+1. **Lab 4 Software Scope:** The Python implementations in Lab 4 serve as analytical supplements and visualizers; they do not replace dedicated graphical Petri net simulation environments used in the course curriculum.
 2. **Lab 6 Data Discretization & Target Imbalance:** Machine failure is a rare event in the AI4I dataset (approx. 3.39% failures). Discretization into 3 quantile bins per continuous variable creates multi-parent conditional probability tables with some sparse configurations. Specific post-failure modes (`TWF`, `HDF`, `PWF`, `OSF`, `RNF`) are intentionally excluded from predictive query evidence to avoid target leakage.
-3. **Plant Growth Sample Size in Lab 6 Alternative:** The secondary plant growth model contains 243 parent state configurations against only 193 observation rows, causing parameter sparsity. The machine failure network is the primary recommended implementation for probabilistic inference.
+3. **Plant Growth Sample Size in Lab 6 (plant_growth):** The secondary plant growth model contains 243 parent state configurations against only 193 observation rows, causing parameter sparsity. The machine failure network provides higher sample density for probabilistic inference compared to the plant growth dataset.
