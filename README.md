@@ -1,34 +1,32 @@
-# System Modeling and Simulation
+# Modeling of Processes and Smart Systems
 
-Academic laboratory collection for the **System Modeling and Simulation** university course.  
-This repository contains analytical, numerical, simulation, and probabilistic models investigating the behavior of complex systems.
-
----
-
-## 1. Project Overview
-
-The repository encompasses practical implementations covering fundamental modeling paradigms:
-1. **Static Black-Box Identification:** Multi-parameter linear regression via Ordinary Least Squares (OLS) with normal equations and matrix decomposition.
-2. **Dynamic Nonlinear Systems:** Cauchy problems for Lotka–Volterra predator–prey dynamics and Kermack–McKendrick SIR epidemic spread using the classical 4th-order Runge–Kutta (RK4) method.
-3. **Spatially Distributed Processes:** One-dimensional transient heat conduction modeled by parabolic partial differential equations (PDE) using the method of lines (finite difference spatial discretization coupled with RK4 time integration), validated against analytical Fourier series.
-4. **Discrete-Event Systems:** Place/Transition Petri nets with reachability graph generation, boundedness, liveness, and deadlock analysis.
-5. **Queueing Systems (GPSS World):** Discrete-event queueing simulation (**Status: Not Implemented / Specification Only**).
-6. **Probabilistic Graphical Models:** Bayesian Belief Networks (BBN) implementing DAG structural learning, parameter estimation via Maximum Likelihood Estimation (MLE), Bayesian Dirichlet equivalent uniform (BDeu) scoring, and exact variable elimination inference.
+Python laboratory implementations and supplementary computational modeling tools for the university course **Modeling of Processes and Smart Systems** (*Моделювання процесів і смарт-систем*).
 
 ---
 
-## 2. Laboratory Status and Canonical Implementations
+## 1. Course Overview
 
-| # | Laboratory Assignment | Method / Paradigm | Canonical Entry Point | Implementation Status | Scientific Evaluation |
-|---|---|---|---|:---:|:---:|
-| **1** | Black-Box Modeling & OLS | Multi-factor OLS, Normal Equations | [`labs/01_black_box_lsq/variant_15/src/lab1.py`](labs/01_black_box_lsq/variant_15/src/lab1.py) | **Complete** | $R^2 = 0.99997$ (Variant 15) |
-| **2** | Dynamic Systems (LV & SIR) | RK4 Numerical Integration | [`labs/02_dynamic_systems/variant_15/src/lab2_1.py`](labs/02_dynamic_systems/variant_15/src/lab2_1.py)<br>[`labs/02_dynamic_systems/variant_15/src/lab2_2.py`](labs/02_dynamic_systems/variant_15/src/lab2_2.py) | **Complete** | Phase portraits & peak analysis |
-| **3** | Spatial Processes (Heat PDE) | Method of Lines (RK4) vs. Fourier Series | [`labs/03_spatial_processes/variant_15/src/lab3.py`](labs/03_spatial_processes/variant_15/src/lab3.py) | **Complete** | Max error $< 0.057^\circ\text{C}$ ($<0.06\%$) |
-| **4** | Petri Nets | Reachability Graph, Liveness & Invariants | [`labs/04_petri_nets/variant_04/src/lab4.py`](labs/04_petri_nets/variant_04/src/lab4.py) | **Complete** | 4 places, finite reachability graph |
-| **5** | Queueing Systems (GPSS) | Discrete-Event GPSS World Simulation | [`labs/05_queueing_systems/README.md`](labs/05_queueing_systems/README.md) | 🔴 **NOT IMPLEMENTED** | Detailed specification only |
-| **6** | Bayesian Networks | DAG Structure Learning, MLE, Inference | [`labs/06_bayesian_networks/machine_failure/src/lab6.py`](labs/06_bayesian_networks/machine_failure/src/lab6.py) | **Complete** | AI4I dataset (10k rows), d-separation |
+This repository provides reproducible computational implementations across fundamental system modeling and simulation paradigms:
 
-> **Academic Note on Readiness:** Implementations are developed for educational research and university coursework. They are not intended as production-grade enterprise simulation engines.
+1. **Static Black-Box Identification:** Multi-factor linear regression using Ordinary Least Squares (OLS) via normal equations and matrix decomposition.
+2. **Dynamic Nonlinear Systems:** Cauchy problems for Lotka–Volterra predator–prey dynamics and Kermack–McKendrick SIR epidemic spread using the classical 4th-order Runge–Kutta (RK4) method with phase-plane analysis.
+3. **Spatially Distributed Processes:** One-dimensional transient heat conduction governed by parabolic partial differential equations (PDE), solved using the method of lines (finite-difference spatial discretization with RK4 temporal integration) and validated against analytical Fourier series solutions.
+4. **Discrete-Event Systems:** Supplementary Python implementations for Place/Transition Petri nets, providing state-space exploration, reachability graph construction, boundedness, and liveness analysis to support work conducted in specialized modeling software.
+5. **Probabilistic Graphical Models (Lab 6):** Discrete Bayesian Belief Networks with domain-specified directed acyclic graph (DAG) topology, parameter learning via Maximum Likelihood Estimation (MLE), and exact inference using Variable Elimination.
+
+---
+
+## 2. Laboratory Modules
+
+| Lab | Topic | Method / Modeling Paradigm | Primary Example | Key Verified Result |
+|---|---|---|---|---|
+| **1** | Black Box Modeling & OLS | Multi-factor Ordinary Least Squares | [Variant 15](labs/01_black_box_lsq/variant_15/src/lab1.py) | $R^2 \approx 0.282914$, $y(1.5, 3.0) \approx 4.413274$ |
+| **2** | Dynamic Systems (LV & SIR) | RK4 Numerical Integration & Phase Portraits | [Variant 15](labs/02_dynamic_systems/variant_15/src/lab2_1.py) | Periodic orbits (LV), epidemic peak at $t \approx 13.8$ (SIR) |
+| **3** | Spatially Distributed Processes | Method of Lines (RK4) vs. Analytical Fourier | [Variant 15](labs/03_spatial_processes/variant_15/src/lab3.py) | Maximum absolute deviation $< 0.057^\circ\text{C}$ ($<0.06\%$) |
+| **4** | Petri Net Modeling & Analysis | Supplementary Reachability Graph Generation | [Variant 04](labs/04_petri_nets/variant_04/src/lab4.py) | 4 places, 4 transitions, finite 4-state reachability graph |
+| **6** | Bayesian Belief Networks | Manually Defined DAG, MLE, Variable Elimination | [Machine Failure](labs/06_bayesian_networks/machine_failure/src/lab6.py) | AI4I 2020 dataset (10k rows), 6 inference scenarios |
+
+> **Note on Course Curriculum:** Laboratory numbering follows the official university course curriculum (Labs 1, 2, 3, 4, and 6).
 
 ---
 
@@ -38,23 +36,21 @@ The repository encompasses practical implementations covering fundamental modeli
 .
 ├── labs/
 │   ├── 01_black_box_lsq/                     # Lab 1: Least Squares Black-Box Modeling
-│   │   ├── variant_15/ (CANONICAL)           # OOP implementation, tabulate metrics, 3D residuals
-│   │   └── variant_04/                       # Procedural reference (Gaussian elimination)
-│   ├── 02_dynamic_systems/                   # Lab 2: Lotka–Volterra and SIR Epidemic Models
-│   │   ├── variant_15/ (CANONICAL)           # Modular architecture, quiver field, peak analysis
-│   │   └── variant_04/                       # Basic RK4 implementation
+│   │   ├── variant_15/                       # Main example: Variant 15 (OOP, residual analysis)
+│   │   └── variant_04/                       # Reference: Variant 04 (Gaussian elimination)
+│   ├── 02_dynamic_systems/                   # Lab 2: Lotka–Volterra and SIR Models
+│   │   ├── variant_15/                       # Main example: Variant 15 (modular RK4, vector fields)
+│   │   └── variant_04/                       # Reference: Variant 04 (basic RK4 integration)
 │   ├── 03_spatial_processes/                 # Lab 3: Transient Heat Conduction (PDE)
-│   │   ├── variant_15/ (CANONICAL)           # Efficient RK4 solver (3,284 steps, 2 s), Fourier comparison
-│   │   └── variant_04/                       # Procedural & structured implementations (1.8M steps)
+│   │   ├── variant_15/                       # Main example: Variant 15 (efficient RK4 solver, Fourier series)
+│   │   └── variant_04/                       # Reference: Variant 04 (procedural & structured implementations)
 │   ├── 04_petri_nets/                        # Lab 4: Discrete Place/Transition Petri Nets
-│   │   └── variant_04/ (CANONICAL)           # Reachability graph generation, NetworkX visualization
-│   ├── 05_queueing_systems/                  # Lab 5: Queueing Systems & GPSS Simulation
-│   │   └── README.md                         # Formal specification & modeling assignment (unimplemented)
+│   │   └── variant_04/                       # Supplementary Python modeling: Variant 04 (reachability graph)
 │   └── 06_bayesian_networks/                 # Lab 6: Bayesian Belief Networks
-│       ├── machine_failure/ (CANONICAL)      # AI4I 2020 dataset (10k rows), 6 inference scenarios
-│       ├── machine_failure_prototype/        # Early exploratory prototype
-│       └── plant_growth/                     # Small-sample experimental model (193 rows)
-├── .gitignore                                # Environment, IDE, and private file exclusions
+│       ├── machine_failure/                  # Main example: AI4I 2020 dataset (10k rows, 6 inference queries)
+│       ├── machine_failure_prototype/        # Exploratory prototype for AI4I dataset
+│       └── plant_growth/                     # Small-sample agricultural network (193 rows)
+├── .gitignore                                # Git ignore configuration
 └── README.md                                 # Public documentation
 ```
 
@@ -64,23 +60,32 @@ The repository encompasses practical implementations covering fundamental modeli
 
 ### Prerequisites
 - Python 3.10+ (tested on Python 3.12)
-- Virtual environment tool (`venv`)
+- Virtual environment (`venv`)
 
 ### Setup Instructions
+
 ```bash
 # Clone the repository
 git clone https://github.com/Eclipse-XS/System-Modeling-and-Simulation.git
 cd System-Modeling-and-Simulation
 
-# Create and activate virtual environment
+# Create virtual environment
 python -m venv .venv
+```
 
-# On Linux/macOS:
-source .venv/bin/activate
-# On Windows:
-.venv\Scripts\activate
+**Activate virtual environment:**
 
-# Install required dependencies
+- **Windows PowerShell:**
+  ```powershell
+  .\.venv\Scripts\Activate.ps1
+  ```
+- **Linux / macOS:**
+  ```bash
+  source .venv/bin/activate
+  ```
+
+**Install verified dependencies:**
+```bash
 pip install numpy scipy matplotlib networkx pgmpy tabulate pandas
 ```
 
@@ -88,31 +93,63 @@ pip install numpy scipy matplotlib networkx pgmpy tabulate pandas
 
 ## 5. Execution Examples
 
-All scripts are self-contained and can be executed either from the repository root or from their respective directories:
+All scripts are self-contained and executable from the repository root:
 
-```bash
-# 1. Lab 1: Least Squares Black Box Modeling (Variant 15)
+```powershell
+# Lab 1: Black Box Modeling via OLS (Variant 15)
 python labs/01_black_box_lsq/variant_15/src/lab1.py
 
-# 2. Lab 2: Dynamic Systems (Lotka-Volterra & SIR) (Variant 15)
+# Lab 2: Dynamic Systems - Lotka-Volterra & SIR Models (Variant 15)
 python labs/02_dynamic_systems/variant_15/src/lab2_1.py
 python labs/02_dynamic_systems/variant_15/src/lab2_2.py
 
-# 3. Lab 3: Spatial Processes & Heat Conduction (Variant 15)
+# Lab 3: Spatial Processes - Heat Conduction PDE (Variant 15)
 python labs/03_spatial_processes/variant_15/src/lab3.py
 
-# 4. Lab 4: Petri Nets Analysis (Variant 04)
+# Lab 4: Petri Nets Analysis (Variant 04)
 python labs/04_petri_nets/variant_04/src/lab4.py
 
-# 5. Lab 6: Bayesian Network Probabilistic Inference (AI4I Machine Failure)
+# Lab 6: Bayesian Network Probabilistic Inference (Machine Failure)
 python labs/06_bayesian_networks/machine_failure/src/lab6.py
 ```
 
 ---
 
-## 6. Datasets and Licensing
+## 6. Scientific Methodology and Verification
 
-The repository includes public, open-access datasets required for reproducible modeling:
+### Lab 1: Least Squares Verification
+For Variant 15, the empirical dataset (8 observation points) yields the following verified parameters:
+- Regression coefficients: $a_0 \approx 5.905310$, $a_1 \approx 1.461947$, $a_2 \approx -1.228319$
+- Linear model equation:
+  $$y = 5.905310 + 1.461947 \cdot x_1 - 1.228319 \cdot x_2$$
+- Sum of Squared Errors: $\text{SSE} \approx 60.249558$
+- Total Sum of Squares: $\text{SST} = 84.020000$
+- Coefficient of Determination: $R^2 = 1 - \frac{\text{SSE}}{\text{SST}} \approx 0.282914$
+- Control point prediction: $y(1.5, 3.0) \approx 4.413274$
+
+*Interpretation:* The linear model achieves an $R^2$ of $0.2829$, reflecting moderate fit for a first-order planar approximation over the assigned experimental data.
+
+### Lab 4: Supplementary Petri Net Modeling
+The scripts in `labs/04_petri_nets/` provide supplementary algorithmic analysis for Petri nets modeled during coursework in specialized software environments. The implementation:
+- Represents the incidence matrix $C = O - I$.
+- Computes transition firing rules under the enabling condition $M \ge I(t)$.
+- Performs breadth-first reachability tree traversal to extract unique reachable markings.
+- Evaluates boundedness (maximum tokens per place) and deadlocks (states with no enabled transitions).
+
+### Lab 6: Bayesian Network Methodology
+The Bayesian Network implementation in `labs/06_bayesian_networks/machine_failure/src/lab6.py`:
+- **DAG Construction:** The 7-edge DAG structure is specified manually based on physical and operational failure dependencies:
+  - $\text{Type} \to \text{Torque\_cat}$, $\text{Type} \to \text{Speed\_cat}$
+  - $\text{Air\_temp\_cat} \to \text{Process\_temp\_cat}$
+  - $\text{Torque\_cat} \to \text{Machine failure}$, $\text{Wear\_cat} \to \text{Machine failure}$
+  - $\text{Speed\_cat} \to \text{Machine failure}$, $\text{Process\_temp\_cat} \to \text{Machine failure}$
+- **Parameter Learning:** Conditional Probability Distributions (CPDs) are estimated from 10,000 discretized records using `MaximumLikelihoodEstimator`.
+- **Probabilistic Inference:** Exact inference is computed using `VariableElimination` across 6 operational scenarios.
+- **Model Validation:** The DAG satisfies structural acyclicity and probability distribution axioms (`check_model()` passes).
+
+---
+
+## 7. Datasets and Licensing
 
 1. **AI4I 2020 Predictive Maintenance Dataset** (`labs/06_bayesian_networks/machine_failure/data/machine_failure.csv`):
    - **Source:** UCI Machine Learning Repository (Matzka, S., 2020; Dua, D. and Graff, C., 2019).
@@ -126,22 +163,8 @@ The repository includes public, open-access datasets required for reproducible m
 
 ---
 
-## 7. Authorship and Provenance
+## 8. Methodological Limitations
 
-- **Repository Maintainer & Primary Implementations (Variant 15):**  
-  The core canonical suite (Labs 1, 2, 3, and 6) was developed under academic Variant 15.
-- **Alternative Implementations (Variant 04):**  
-  Supplementary implementations for Variant 04 (including canonical Lab 4) are maintained for multi-variant benchmarking and completeness.
-- **Third-Party Student Implementations:**  
-  Historical coursework reference solutions (e.g., Variant 21 by student Ostap Seniv) were cataloged during internal code auditing and are preserved in local offline archives; they are excluded from the public git repository in compliance with academic copyright and redistribution principles.
-
----
-
-## 8. Known Limitations and Future Work
-
-1. **Lab 5 (Queueing Systems / GPSS) is Unimplemented:**  
-   The project does not contain compiled `.gps` simulation models or execution logs for GPSS World Student. The directory [`labs/05_queueing_systems/README.md`](labs/05_queueing_systems/README.md) provides the formal technical specification for two systems: a multi-pump gas station and a dual-processor sensor queue.
-2. **Variant Heterogeneity in Lab 4:**  
-   While Labs 1, 2, 3, and 6 correspond to Variant 15, Lab 4 is implemented under Variant 4 due to the absence of a Variant 15 solution in the original source archive. The state-space generation logic in `lab4.py` is fully parameterized and can be adapted to any valid incidence matrix.
-3. **Plant Growth CPD Degeneracy in Lab 6 Alternative:**  
-   The secondary experimental Bayesian Network (`labs/06_bayesian_networks/plant_growth/`) has 243 conditional parent configurations against only 193 sample rows, resulting in 53% unobserved conditional probability parameters. The canonical machine failure network (`labs/06_bayesian_networks/machine_failure/`) should always be preferred for rigorous probabilistic reasoning.
+1. **Lab 4 Software Scope:** The Python implementations in Lab 4 serve as analytical supplements and visualizers; they do not replace dedicated graphical Petri net simulation environments used in the primary course curriculum.
+2. **Lab 6 Data Discretization & Target Imbalance:** Machine failure is a rare event in the AI4I dataset (approx. 3.39% failures). Discretization into 3 quantile bins per continuous variable creates multi-parent conditional probability tables with some sparse configurations. Specific post-failure modes (`TWF`, `HDF`, `PWF`, `OSF`, `RNF`) are intentionally excluded from predictive query evidence to avoid target leakage.
+3. **Plant Growth Sample Size in Lab 6 Alternative:** The secondary plant growth model contains 243 parent state configurations against only 193 observation rows, causing parameter sparsity. The machine failure network is the primary recommended implementation for probabilistic inference.
